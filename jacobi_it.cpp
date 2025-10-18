@@ -13,7 +13,7 @@ int main()
     vector<double>x(n,0.0);
     vector<double>x_new(n,0.0);
 
-    cout<<"Co-eff matrix : "<<endl;
+    cout<<"Co-eff. matrix : "<<endl;
     for(int i=0; i<n; i++)
         for(int j=0; j<n; j++)
         cin>>a[i][j];
