@@ -21,7 +21,7 @@ pair<double,int> raphson(double x0, double E)
     while(iter<1000)
     {
         double d=df(x0);
-        if(fabs(d)<1e-9) break;
+        if(fabs(d)<1e-9)  return {x0,iter};
         x1=x0-f(x0)/d;
         if(fabs(x1-x0)<E) return {x1,iter};
         x0=x1;
