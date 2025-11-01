@@ -26,12 +26,6 @@ int main(){
             for(int k=i;k<=n;k++)a[j][k]-=f*a[i][k];
         }
     }
-
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++)
-            cout<<fixed<<setprecision(2)<<a[i][j]<<" ";
-        cout<<endl;}
-
     vector<double>x(n);
     for(int i=n-1;i>=0;i--){
         x[i]=a[i][n];
@@ -43,3 +37,4 @@ int main(){
     for(int i=0;i<n;i++)
         cout<<"x"<<i+1<<" = "<<fixed<<setprecision(3)<<x[i]<<endl;
 }
+
