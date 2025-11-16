@@ -38,3 +38,4 @@ int main(){
         cout<<"x"<<i+1<<" = "<<fixed<<setprecision(3)<<x[i]<<endl;
 }
 
+
