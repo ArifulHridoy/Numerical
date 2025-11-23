@@ -4,16 +4,16 @@ using namespace std;
 
 vector<vector<double>>getMinor(const vector<vector<double>>& A, int r, int c)
 {
-    int n = A.size();
-    vector<vector<double>> minor;
+    int n=A.size();
+    vector<vector<double>>minor;
 
-    for (int i = 0; i < n; i++)
+    for(int i=0; i<n; i++)
     {
-        if (i==r) continue;
+        if(i==r) continue;
         vector<double>row;
-        for (int j=0; j<n; j++)
+        for(int j=0; j<n; j++)
         {
-            if (j==c) continue;
+            if(j==c) continue;
             row.push_back(A[i][j]);
         }
         minor.push_back(row);
@@ -25,13 +25,13 @@ double determinant(const vector<vector<double>>&A)
 {
     int n=A.size();
 
-    if (n==1)
+    if(n==1)
         return A[0][0];
-    if (n==2)
+    if(n==2)
         return A[0][0]*A[1][1] - A[0][1]*A[1][0];
 
     double det=0;
-    for (int col=0; col<n; col++)
+    for(int col=0; col<n; col++)
     {
         vector<vector<double>>m=getMinor(A,0,col);
         det+=((col%2 ==0?1:-1)*A[0][col] * determinant(m));
@@ -41,7 +41,7 @@ double determinant(const vector<vector<double>>&A)
 
 vector<vector<double>>cofactorMatrix(const vector<vector<double>> &A)
 {
-    int n = A.size();
+    int n=A.size();
     vector<vector<double>>C(n, vector<double>(n));
 
     for (int i=0; i<n; i++)
@@ -83,7 +83,7 @@ vector<vector<double>>inverse(const vector<vector<double>>&A)
     vector<vector<double>>inv(n,vector<double>(n));
     for (int i=0; i <n; i++)
         for (int j=0; j<n; j++)
-            inv[i][j] = adj[i][j]/detA;
+            inv[i][j]=adj[i][j]/detA;
 
     return inv;
 }
@@ -94,8 +94,8 @@ vector<double>multiply(const vector<vector<double>> &A, const vector<double> &B)
     vector<double> X(n,0);
 
     for (int i=0; i<n; i++)
-        for (int j=0; j<n; j++)
-            X[i] += A[i][j]*B[j];
+        for(int j=0; j<n; j++)
+            X[i]+=A[i][j]*B[j];
 
     return X;
 }
@@ -103,29 +103,29 @@ vector<double>multiply(const vector<vector<double>> &A, const vector<double> &B)
 int main()
 {
     int n;
-    cout << "Enter number of equations: ";
-    cin >> n;
+    cout<<"Enter number of equations: ";
+    cin>>n;
 
     vector<vector<double>> A(n, vector<double>(n));
     vector<double> B(n);
 
-    cout << "Enter coefficient matrix A:\n";
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            cin >> A[i][j];
+    cout<<"Enter coefficient matrix A:\n";
+    for(int i=0; i<n; i++)
+        for(int j=0; j<n; j++)
+            cin>>A[i][j];
 
     cout << "Enter constants vector B:\n";
-    for (int i = 0; i < n; i++)
-        cin >> B[i];
+    for(int i=0; i<n; i++)
+        cin>>B[i];
 
     try
     {
-        vector<vector<double>> invA = inverse(A);
-        vector<double> X = multiply(invA, B);
+        vector<vector<double>> invA=inverse(A);
+        vector<double> X=multiply(invA, B);
 
         cout<<"\nSolution (X):\n";
-        for(int i = 0; i < n; i++)
-            cout << "x" << i+1 << " = " << X[i] << endl;
+        for(int i=0; i<n; i++)
+            cout<<"x"<<i+1<<" = "<<X[i]<<endl;
 
     }
     catch (exception &e)
